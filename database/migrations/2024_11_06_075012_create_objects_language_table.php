@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('configs', function (Blueprint $table) {
-            $table->string('key');
-            $table->text('value');
+        Schema::create('objects', function (Blueprint $table) {
+            $table->unsignedBigInteger('object_id');
+            $table->foreignId('language_id')->constrained();
+            $table->primary(['object_id', 'language_id']);
+            $table->integer('type');
+
+
         });
     }
 
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('configs');
+        Schema::dropIfExists('objects');
     }
 };
