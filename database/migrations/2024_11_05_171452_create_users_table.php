@@ -21,12 +21,12 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->integer('role')->default(1);
             $table->text('bio')->nullable();
-            $table->string('possition')->nullable();
+            $table->string('position')->nullable();
             $table->boolean('gender')->default(false);
-            $table->string('city')->nullable();
+            $table->string('city');
             $table->foreignId('company_id')->constrained();
-
             $table->timestamps();
+
         });
     }
 
