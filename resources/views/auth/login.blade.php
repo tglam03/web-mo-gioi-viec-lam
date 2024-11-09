@@ -59,7 +59,7 @@
                                 <a href="{{ route('auth.redirect', 'github') }}" class="social-list-item border-danger text-danger"><i class="mdi mdi-linkedin-box"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-gitlab"></i></a>
+                                <a href="{{ route('auth.redirect', 'gitlab') }}" class="social-list-item border-info text-info"><i class="mdi mdi-gitlab"></i></a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="{{ route('auth.redirect', 'github') }}" class="social-list-item border-info text-info"><i class="mdi mdi-github-circle"></i></a>

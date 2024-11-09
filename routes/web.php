@@ -15,18 +15,17 @@
     |
     */
 
-Route::get('/login', [AuthController::class, 'login']);
 
-Route::get('/', function () {
-    return view('layout.master');
-});
+    Route::get('/', function () {
+        return view('layout.master');
+    });
 
-Route::get('/auth/redirect/{provider}', function ($provider) {
+    Route::get('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::get('/register', [AuthController::class, 'registering'])->name('registering');
+
+    Route::get('/auth/redirect/{provider}', function ($provider) {
         return Socialite::driver($provider)->redirect();
-})->name('auth.redirect');
+    })->name('auth.redirect');
 
-Route::get('/auth/callback/{provider}', function ($provider) {
-        $user = Socialite::driver($provider)->user();
-
-        // $user->token
-})->name('auth.callback');
+    Route::get('/auth/callback/{provider}', [AuthController::class, 'callback'])->name('auth.callback');
