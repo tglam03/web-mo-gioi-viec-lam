@@ -18,14 +18,17 @@
 
     Route::get('/', function () {
         return view('layout.master');
-    });
+    })->name('welcome');
 
-    Route::get('/login', [AuthController::class, 'login']);
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::get('/register', [AuthController::class, 'registering'])->name('registering');
+    Route::post('/register', [AuthController::class, 'registering'])->name('registering');
 
     Route::get('/auth/redirect/{provider}', function ($provider) {
         return Socialite::driver($provider)->redirect();
     })->name('auth.redirect');
 
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
     Route::get('/auth/callback/{provider}', [AuthController::class, 'callback'])->name('auth.callback');
+
